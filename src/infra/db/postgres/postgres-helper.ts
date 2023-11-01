@@ -29,4 +29,24 @@ export const PostgresHelper = {
 
     return result.rows;
   },
+
+  async transaction<T>(callback: () => Promise<T>): Promise<T> {
+    if (!this.client) {
+      throw new Error("No client connected");
+    }
+
+    try {
+      await this.client.query("BEGIN");
+
+      const result = await callback();
+
+      await this.client.query("COMMIT");
+
+      return result;
+    } catch (error) {
+      await this.client.query("ROLLBACK");
+
+      throw error;
+    }
+  },
 };

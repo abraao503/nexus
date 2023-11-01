@@ -1,3 +1,3 @@
 export interface Get {
-  get: (url: string) => Promise<any>;
+  get: (url: string) => Promise<unknown>;
 }
