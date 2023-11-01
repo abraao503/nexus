@@ -1,5 +1,3 @@
-import { UserResult } from "./user";
-
 export type EditUserRepositoryParams = {
   name?: string;
   email?: string;
@@ -8,5 +6,5 @@ export type EditUserRepositoryParams = {
 };
 
 export interface EditUserRepository {
-  edit: (user: EditUserRepositoryParams) => Promise<UserResult>;
+  editById: (id: string, user: EditUserRepositoryParams) => Promise<void>;
 }

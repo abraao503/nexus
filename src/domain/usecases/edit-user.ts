@@ -1,5 +1,3 @@
-import { User } from "../entities/user";
-
 export type EditUserParams = {
   name?: string;
   email?: string;
@@ -8,5 +6,5 @@ export type EditUserParams = {
 };
 
 export interface EditUser {
-  edit: (user: EditUserParams) => Promise<User>;
+  edit: (id: string, user: EditUserParams) => Promise<void>;
 }
